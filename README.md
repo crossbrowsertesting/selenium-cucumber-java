@@ -10,7 +10,7 @@ Want a powerful and easy to use command line tool for running Selenium tests? <
 mvn archetype:generate \
 -DarchetypeGroupId=io.cucumber \
 -DarchetypeArtifactId=cucumber-archetype \
--DarchetypeVersion=2.3.1.2 \
+-DarchetypeVersion=4.2.6.1 \
 -DgroupId=seleniumcucumber \
 -DartifactId=seleniumcucumber \
 -Dpackage=seleniumcucumber \
@@ -40,7 +40,7 @@ import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import org.junit.Assert;
+import org.junit.Assert.*;
 import org.openqa.selenium.remote.*;
 import org.openqa.selenium.*;
 import java.net.URL;
@@ -65,7 +65,7 @@ DesiredCapabilities caps = new DesiredCapabilities();
 caps.setCapability("name", "selenium cucumber");
 caps.setCapability("browserName", "Chrome");
 caps.setCapability("platform", "Windows 10");
-caps.setCapability("version", "71");
+caps.setCapability("version", "76");
 caps.setCapability("screenResolution", "1366x768");
 caps.setCapability("record_video", "true");
 
@@ -93,7 +93,7 @@ driver.findElement(By.linkText("archive")).click();
 @Then("^I should have no todos$")
 public void I_should_have_no_todos() throws Throwable {
 List elems = driver.findElements(By.className("done-true"));
-Assert.assertEquals(0, elems.size());
+assertEquals(0, elems.size());
 }
 
 @After
