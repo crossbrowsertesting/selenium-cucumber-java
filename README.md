@@ -26,7 +26,7 @@ mvn archetype:generate \
 </code></pre>
 <strong>4.</strong> Create an empty file called <span class="text-java"><code>src/test/resources/seleniumcucumber/todo.feature</code></span> with the following content:
 <pre><code>Feature: ToDo
-  Scenario: Testing ToDos
+  Scenario: Archiving ToDos
     Given I go to my ToDo App
     When I archive all todos
     Then I should have no todos</code></pre>
