@@ -28,8 +28,7 @@ mvn archetype:generate \
 <pre><code>Feature: ToDo
   Scenario: Testing ToDos
     Given I go to my ToDo App
-    When I click on all todos
-    When I click archive
+    When I archive all todos
     Then I should have no todos</code></pre>
 <strong>5.</strong> Edit the file called <span class="text-java"><code>src/test/java/seleniumcucumber/Stepdefs.java</code></span> with the following content:
 <pre><code>package seleniumcucumber;
@@ -65,32 +64,27 @@ DesiredCapabilities caps = new DesiredCapabilities();
 caps.setCapability("name", "selenium cucumber");
 caps.setCapability("browserName", "Chrome");
 caps.setCapability("platform", "Windows 10");
-caps.setCapability("version", "76");
 caps.setCapability("screenResolution", "1366x768");
 caps.setCapability("record_video", "true");
 
 driver = new RemoteWebDriver(new URL("http://" + username + ":" + authkey +"@hub.crossbrowsertesting.com:80/wd/hub"), caps);
 }
-@Given("^I go to my ToDo App$")
+@Given("I go to my ToDo App")
 public void I_go_to_my_todo_app() throws Throwable {
 driver.get("http://crossbrowsertesting.github.io/todo-app.html");
 }
 
-@When("^I click on all todos$")
+@When("I archive all todos")
 public void I_click_on_my_todos() throws Throwable {
 driver.findElement(By.name("todo-1")).click();
 driver.findElement(By.name("todo-2")).click();
 driver.findElement(By.name("todo-3")).click();
 driver.findElement(By.name("todo-4")).click();
 driver.findElement(By.name("todo-5")).click();
-}
-
-@When("^I click archive$")
-public void I_click_archive() throws Throwable {
 driver.findElement(By.linkText("archive")).click();
 }
 
-@Then("^I should have no todos$")
+@Then("I should have no todos")
 public void I_should_have_no_todos() throws Throwable {
 List elems = driver.findElements(By.className("done-true"));
 assertEquals(0, elems.size());
